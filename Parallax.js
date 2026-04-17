@@ -1,83 +1,23 @@
-(function () {
-  const items = Array.from(document.querySelectorAll("[data-parallax]"));
-  const panels = Array.from(document.querySelectorAll(".scene-panel"));
-  const meterFill = document.querySelector(".scroll-meter-fill");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const enableParallax = items.length > 0 && !reducedMotion;
+$(window).bind('scroll', function() {
+    requestAnimationFrame(parallaxScroll);
+});
 
-  let ticking = false;
-
-  function render() {
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-
-    for (const item of items) {
-      const speed = Number(item.dataset.speed || 0);
-      const axis = item.dataset.axis === "x" ? "x" : "y";
-      const offset = Number(item.dataset.offset || 0);
-      const shift = offset - scrollY * speed;
-
-      if (axis === "x") {
-        item.style.transform = "translate3d(" + shift + "px, 0, 0)";
-      } else {
-        item.style.transform = "translate3d(0, " + shift + "px, 0)";
-      }
-    }
-
-    ticking = false;
-  }
-
-  function onScroll() {
-    if (!ticking) {
-      window.requestAnimationFrame(render);
-      ticking = true;
-    }
-  }
-
-  if (enableParallax) {
-    render();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-  }
-
-  if (panels.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            panels.forEach((panel) => panel.classList.remove("active"));
-            entry.target.classList.add("active");
-
-            const theme = entry.target.getAttribute("data-scene-theme");
-            if (theme) {
-              document.body.setAttribute("data-scene-theme", theme);
-            }
-          }
-        }
-      },
-      {
-        root: null,
-        threshold: 0.55
-      }
-    );
-
-    panels.forEach((panel) => observer.observe(panel));
-
-    const initialTheme = panels[0].getAttribute("data-scene-theme");
-    if (initialTheme) {
-      document.body.setAttribute("data-scene-theme", initialTheme);
-    }
-  }
-
-  if (meterFill) {
-    const updateMeter = function () {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const top = window.pageYOffset || document.documentElement.scrollTop || 0;
-      const progress = maxScroll > 0 ? Math.min(100, (top / maxScroll) * 100) : 0;
-      meterFill.style.height = progress + "%";
-    };
-
-    updateMeter();
-    window.addEventListener("scroll", updateMeter, { passive: true });
-    window.addEventListener("resize", updateMeter);
-  }
-})();
+function parallaxScroll() {
+    var scrolled = $(window).scrollTop();
+    
+    // Background city layers moving at different speeds
+    $('.layer-1').css('top', (0 - (scrolled * .25)) + 'px');
+    $('.layer-2').css('top', (0 - (scrolled * .50)) + 'px');
+    $('.layer-3').css('top', (0 - (scrolled * .75)) + 'px');
+    
+    // Floating objects moving up at various speeds
+    $('.rock-1').css('top', (400 - (scrolled * .85)) + 'px');
+    $('.rock-2').css('top', (200 - (scrolled * .65)) + 'px');
+    $('.rock-3').css('top', (500 - (scrolled * .45)) + 'px');
+    $('.rock-4').css('top', (600 - (scrolled * .55)) + 'px');
+    $('.rock-5').css('top', (600 - (scrolled * .75)) + 'px');
+    $('.rock-6').css('top', (400 - (scrolled * .75)) + 'px');
+    $('.rock-7').css('top', (600 - (scrolled * .55)) + 'px');
+    $('.rock-8').css('top', (200 - (scrolled * .25)) + 'px');
+    $('.rock-9').css('top', (200 - (scrolled * .45)) + 'px');
+}
