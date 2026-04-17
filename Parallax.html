@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expanse Parallax Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="task2.css">
+</head>
+<body>
+  <main class="site-shell">
+    <section class="hero" aria-label="Parallax intro scene">
+      <div class="parallax-layer sky-gradient" data-parallax data-speed="0.03" data-axis="y"></div>
+      <div class="parallax-layer stars" data-parallax data-speed="0.09" data-axis="y"></div>
+      <div class="parallax-layer nebula" data-parallax data-speed="0.14" data-axis="y"></div>
+      <div class="parallax-layer cloud-band cloud-a" data-parallax data-speed="0.19" data-axis="x"></div>
+      <div class="parallax-layer cloud-band cloud-b" data-parallax data-speed="-0.14" data-axis="x"></div>
+      <div class="parallax-layer mountain mountain-back" data-parallax data-speed="0.24" data-axis="y"></div>
+      <div class="parallax-layer mountain mountain-mid" data-parallax data-speed="0.34" data-axis="y"></div>
+      <div class="parallax-layer mountain mountain-front" data-parallax data-speed="0.46" data-axis="y"></div>
+      <div class="parallax-layer aurora" data-parallax data-speed="0.17" data-axis="y"></div>
+      <div class="parallax-layer fog fog-far" data-parallax data-speed="0.38" data-axis="y"></div>
+      <div class="parallax-layer fog fog-near" data-parallax data-speed="0.58" data-axis="y"></div>
+
+      <div class="floating-objects">
+        <span class="orb orb-1" data-parallax data-speed="0.51" data-axis="y"></span>
+        <span class="orb orb-2" data-parallax data-speed="0.67" data-axis="y"></span>
+        <span class="orb orb-3" data-parallax data-speed="0.43" data-axis="x"></span>
+        <span class="orb orb-4" data-parallax data-speed="0.59" data-axis="x"></span>
+        <span class="shard shard-1" data-parallax data-speed="0.77" data-axis="y"></span>
+        <span class="shard shard-2" data-parallax data-speed="0.82" data-axis="y"></span>
+        <span class="shard shard-3" data-parallax data-speed="0.62" data-axis="x"></span>
+      </div>
+
+      <div class="hero-copy" data-parallax data-speed="0.12" data-axis="y">
+        <p class="eyebrow">Immersive Scroll Concept</p>
+        <h1>A Life Beyond The Edge</h1>
+        <p class="lead">An expanded parallax journey with layered atmosphere, moving objects, and long-form storytelling sections.</p>
+        <a href="#story" class="cta">Scroll To Explore</a>
+      </div>
+
+      <div class="hero-vignette"></div>
+    </section>
+
+    <section id="story" class="story">
+      <article class="story-block">
+        <h2>Depth Layer 01</h2>
+        <p>Background stars and a slow nebula establish deep visual space. Their movement is subtle so nearby layers feel faster and more tangible.</p>
+      </article>
+      <article class="story-block">
+        <h2>Depth Layer 02</h2>
+        <p>Mountain silhouettes and cloud bands create the middle ground. Opposite horizontal drift adds life while preserving readability of text.</p>
+      </article>
+      <article class="story-block">
+        <h2>Depth Layer 03</h2>
+        <p>Front fog, shards, and glow particles move with higher speeds. This gives users a stronger motion cue as they scroll down the page.</p>
+      </article>
+      <article class="story-block full">
+        <h2>Designed To Expand</h2>
+        <p>This structure is intentionally modular. Add any new visual object, set <code>data-parallax</code>, then tune <code>data-speed</code> and <code>data-axis</code>. The script handles the rest.</p>
+      </article>
+    </section>
+
+    <section class="journey" aria-label="Narrative scroll sequence">
+      <div class="scroll-meter" aria-hidden="true"><span class="scroll-meter-fill"></span></div>
+
+      <article class="scene-panel active" data-scene-theme="dawn">
+        <div class="scene-number">01</div>
+        <div class="scene-copy">
+          <p class="scene-tag">Story Phase</p>
+          <h3>Arrival Through The Mist</h3>
+          <p>Layers move gently while the horizon breathes. The scene invites users in before stronger transitions begin.</p>
+        </div>
+      </article>
+
+      <article class="scene-panel" data-scene-theme="azure">
+        <div class="scene-number">02</div>
+        <div class="scene-copy">
+          <p class="scene-tag">Story Phase</p>
+          <h3>Floating Signals</h3>
+          <p>Foreground objects glide faster to push contrast between near and far depth planes as the page unfolds.</p>
+        </div>
+      </article>
+
+      <article class="scene-panel" data-scene-theme="ember">
+        <div class="scene-number">03</div>
+        <div class="scene-copy">
+          <p class="scene-tag">Story Phase</p>
+          <h3>Canyon Of Light</h3>
+          <p>Color temperature warms up and card sections become brighter, creating a cinematic shift in atmosphere.</p>
+        </div>
+      </article>
+
+      <article class="scene-panel" data-scene-theme="night">
+        <div class="scene-number">04</div>
+        <div class="scene-copy">
+          <p class="scene-tag">Story Phase</p>
+          <h3>Beyond The Ridge</h3>
+          <p>The final panel settles into a deep night palette to close the experience with calm and scale.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script src="task2.js"></script>
+</body>
+</html>
